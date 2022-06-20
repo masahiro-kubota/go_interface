@@ -32,7 +32,7 @@ The following use cases are realized by using it in combination with FMS (fleet 
 |operation_mode|Select the following operation modes; `product`, `server_test`, `local_test`, `not_use`. The URLs corresponding to these modes are set in [go_interface_params](https://github.com/eve-autonomy/go_interface_params.default). This URL applies to the `delivery_reservation_service_url` parameter.|
 |access_token|Access token of on-demand delivery application. This value is passed directly to the `access_token` parameter.|
 
-## Parameter discription
+## Parameter description
 <table>
   <thead>
     <tr>
