@@ -26,7 +26,7 @@ The following use cases are realized by using it in combination with FMS (fleet 
 ## Node Graph
 ![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/go_interface/docs/node_graph.pu)
 
-## Launch argument
+## Launch arguments
 |Name|Description|
 |:---|:----------|
 |operation_mode|Select the following operation modes; `product`, `server_test`, `local_test`, `not_use`. The URLs corresponding to these modes are set in [go_interface_params](https://github.com/eve-autonomy/go_interface_params.default). This URL applies to the `delivery_reservation_service_url` parameter.|
