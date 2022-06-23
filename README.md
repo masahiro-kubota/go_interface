@@ -16,12 +16,12 @@ The following use cases are realized by using it in combination with FMS (fleet 
   - from [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine) 
     - `/req_change_lock_flg` \[[go_interface_msgs/ChangeLockFlg](https://github.com/eve-autonomy/go_interface_msgs/blob/main/msg/ChangeLockFlg.msg)\]: Receives reservations for on-demand delivery.
   - from [on-demand delivery apps (user-defined)](#required-specifications-for-on-demand-delivery-apps)
-    - [`GET API`](#api--get-current-reservation-status): Gets the current reservation status for on-demand delivery in the ego vehicle.
+    - [`GET API`](#get-api--get-current-reservation-status): Gets the current reservation status for on-demand delivery in the ego vehicle.
 - output
   - to [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine)
     - `/api_vehicle_status` \[[go_interface_msgs/VehicleStatus](https://github.com/eve-autonomy/go_interface_msgs/blob/main/msg/VehicleStatus.msg)\]: The current reservation status for on-demand delivery in the ego vehicle.
   - to [on-demand delivery apps (user-defined)](#required-specifications-for-on-demand-delivery-apps)
-    - [`PATCH API`](#api--update-reservation-status): Updates the reservation status for on-demand delivery in the ego vehicle.
+    - [`PATCH API`](#patch-api--update-reservation-status): Updates the reservation status for on-demand delivery in the ego vehicle.
 
 ## Node Graph
 ![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/go_interface/docs/node_graph.pu)
@@ -80,7 +80,7 @@ The following contents are output as Headers.
 
 </div></details>
 
-### API : Get current reservation status
+### GET API : Get current reservation status
 
 <details><summary>GET API sample</summary><div>
 
@@ -103,7 +103,7 @@ GET (server_url)/api/vehicle_status?vehicle_id=t728943hy098r3 HTTP/1.1
 
 </div></details>
 
-### API : Update reservation status
+### PATCH API : Update reservation status
 
 <details><summary>PATCH API sample</summary><div>
 
