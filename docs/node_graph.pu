@@ -17,8 +17,8 @@ usecase "/delivery_reservation_button_manager"
 (FMS) --> (Agent) : delivery scedule
 (FMS) <-- (Agent) : vehicle status
 (/go_interface) <- (Agent): /webauto/vehicle_info
-(DeliveryApp) -->  (/go_interface) : /api/vehicle_status (REST API)
-(/go_interface) --> (DeliveryApp)
+(DeliveryApp) -->  (/go_interface) : result of GET API
+(/go_interface) --> (DeliveryApp) : request of GET API\nrequest of PATCH API
 (/go_interface) --> (/autoware_state_machine) : /api_vehicle_status
 (/autoware_state_machine) --> (/go_interface) : /req_change_lock_flg
 (/autoware_state_machine) -> (/ad_sound_manager) : Plays audio to request a departure operation.
