@@ -59,8 +59,6 @@ The following features need to be provided by on-demand delivery apps.
 - Providing a UI, the user can specify an arbitrary destination after identifying the vehicle.
 - Reserve a delivery schedule for the fleet management service.
 
-<details><summary>Detail of REST API</summary><div>
-
 On-demand delivery apps must be implemented according to the following specifications.
 
 
@@ -69,7 +67,9 @@ See the [README](https://github.com/eve-autonomy/go_interface_params.default) in
 
 ### Headers
 The following contents are output as Headers.
-#### Headers sample
+
+<details><summary>Headers sample</summary><div>
+
 ```
 {
   "Accept": "application/json",
@@ -78,7 +78,12 @@ The following contents are output as Headers.
 }
 ```
 
+</div></details>
+
 ### API : Get current reservation status
+
+<details><summary>GET API sample</summary><div>
+
 #### Request Sample for GET API
 ```
 GET (server_url)/api/vehicle_status?vehicle_id=t728943hy098r3 HTTP/1.1
@@ -96,7 +101,12 @@ GET (server_url)/api/vehicle_status?vehicle_id=t728943hy098r3 HTTP/1.1
 }
 ```
 
+</div></details>
+
 ### API : Update reservation status
+
+<details><summary>PATCH API sample</summary><div>
+
 #### Request Sample for PATCH API
 ```
 PATCH (server_url)/api/vehicle_status HTTP/1.1
