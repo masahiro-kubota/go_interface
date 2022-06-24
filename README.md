@@ -13,7 +13,7 @@ The following use cases are realized by using it in combination with FMS (fleet 
 - input
   - from [Web.Auto](https://tier4.jp/en/products/#webauto) (DevOps Platform provided by TIER IV)
     - `/webauto/vehicle_info` \[[std_msgs/msg/String](https://docs.ros2.org/foxy/api/std_msgs/msg/String.html)\]: Gets unique ID of the ego vehicle managed by Web.Auto.
-  - from [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine) 
+  - from [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine/) 
     - `/req_change_lock_flg` \[[go_interface_msgs/ChangeLockFlg](https://github.com/eve-autonomy/go_interface_msgs/blob/main/msg/ChangeLockFlg.msg)\]: Receives reservations for on-demand delivery.
   - from [on-demand delivery apps (user-defined)](#required-specifications-for-on-demand-delivery-apps)
     - [`GET API`](#get-api--get-current-reservation-status): Gets the current reservation status for on-demand delivery in the ego vehicle.
