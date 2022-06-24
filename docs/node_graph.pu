@@ -1,8 +1,6 @@
 @startuml
-rectangle "web.auto" {
-  cloud "FMS (Fleet management system)" as FMS
-  usecase "Agent (Interface for FMS)" as Agent
-}
+cloud "FMS (Fleet management system)" as FMS
+usecase "Agent (Interface for FMS)" as Agent
 rectangle "user-defined" {
   cloud "on-demand delivery apps" as DeliveryApp
 }
