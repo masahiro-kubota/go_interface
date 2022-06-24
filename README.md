@@ -1,7 +1,7 @@
 # Go interface
 
 ## Overview
-This node integrates user-defined on-demand delivery apps with in-vehicle systems.
+This node integrates user-defined on-demand delivery apps with autonomous driving systems.
 
 Following use-cases are realized by connecting with FMS (fleet management service) providing by TIER IV, inc.
 
