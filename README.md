@@ -18,7 +18,7 @@ The following use cases are realized by using it in combination with FMS (fleet 
   - from [on-demand delivery apps (user-defined)](#required-specifications-for-on-demand-delivery-apps)
     - [`GET API`](#get-api--get-current-reservation-status): Gets the current reservation status for on-demand delivery in the ego vehicle.
 - output
-  - to [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine)
+  - to [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine/)
     - `/api_vehicle_status` \[[go_interface_msgs/VehicleStatus](https://github.com/eve-autonomy/go_interface_msgs/blob/main/msg/VehicleStatus.msg)\]: The current reservation status for on-demand delivery in the ego vehicle.
   - to [on-demand delivery apps (user-defined)](#required-specifications-for-on-demand-delivery-apps)
     - [`PATCH API`](#patch-api--update-reservation-status): Updates the reservation status for on-demand delivery in the ego vehicle.
