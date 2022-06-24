@@ -3,7 +3,7 @@
 ## Overview
 This node integrates user-defined on-demand delivery apps with in-vehicle systems.
 
-The following use cases are realized by using it in combination with FMS (fleet management service) provided by TIER IV, inc.
+Following use-cases are realized by connecting with FMS (fleet management service) providing by TIER IV, inc.
 
 - Switch between on-demand delivery and regular delivery.
 - Call the ego vehicle to any loading / unloading place.
