@@ -24,7 +24,7 @@ Following use-cases are realized by connecting with FMS (fleet management servic
     - [`PATCH API`](#patch-api--update-reservation-status): Updates the reservation status for on-demand delivery in the ego vehicle.
 
 ## Node Graph
-![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/go_interface/docs/node_graph.pu)
+![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/go_interface/main/docs/node_graph.pu)
 
 ## Launch arguments
 |Name|Description|
