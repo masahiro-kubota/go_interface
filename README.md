@@ -5,9 +5,9 @@ This node integrates user-defined on-demand delivery apps with autonomous drivin
 
 Following use-cases are realized by connecting with FMS (fleet management service) providing by TIER IV, inc.
 
-- Switch between on-demand delivery and regular delivery.
-- Call the ego vehicle to any loading / unloading place.
-- Send the ego vehicle to any loading / unloading place.
+- Switch operation mode between on-demand delivery and regular delivery.
+- Call an ego vehicle to a designated stop.
+- Send an ego vehicle to a designated stop.
 
 ## Input and Output
 - input
