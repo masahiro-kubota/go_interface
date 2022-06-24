@@ -1,0 +1,28 @@
+@startuml
+cloud "FMS (Fleet management system)" as FMS
+usecase "Agent (Interface for FMS)" as Agent
+rectangle "user-defined" {
+  cloud "on-demand delivery apps" as DeliveryApp
+}
+usecase "/go_interface" #LightCoral
+usecase "/autoware_state_machine"
+usecase "/ad_sound_manager"
+usecase "/delivery_reservation_lamp_manager"
+usecase "/delivery_reservation_button_manager"
+
+(DeliveryApp) -> (FMS) : reserve delivery scedule
+(DeliveryApp) <- (FMS) : ID of available veihcle
+(FMS) --> (Agent) : delivery scedule
+(FMS) <-- (Agent) : vehicle status
+(/go_interface) <- (Agent): /webauto/vehicle_info
+(DeliveryApp) -->  (/go_interface) : result of GET API
+(/go_interface) --> (DeliveryApp) : request of GET API\nrequest of PATCH API
+(/go_interface) --> (/autoware_state_machine) : /api_vehicle_status
+(/autoware_state_machine) --> (/go_interface) : /req_change_lock_flg
+(/autoware_state_machine) -> (/ad_sound_manager) : Plays audio to request a departure operation.
+(/autoware_state_machine) --> (/delivery_reservation_lamp_manager) : Displays the reservation status.
+(/autoware_state_machine) <-- (/delivery_reservation_button_manager) : Switch to on-demand delivery mode.
+
+note right of FMS : In SaaS
+note right of Agent : In vehicle system
+@enduml
