@@ -33,24 +33,10 @@ Following use-cases are realized by connecting with FMS (fleet management servic
 |access_token|Access token of on-demand delivery application. This value is passed directly to the `access_token` parameter.|
 
 ## Parameter description
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>delivery_reservation_service_url</td>
-      <td>URL of on-demand delivery application.</td>
-    <tr>
-    <tr>
-      <td>access_token</td>
-      <td>Access token of on-demand delivery application.</td>
-    <tr>
-  </tbody>
-</table>
+|Name                             |Description                                    |
+|:--------------------------------|:----------------------------------------------|
+|delivery_reservation_service_url |URL of on-demand delivery application.         |
+|access_token                     |Access token of on-demand delivery application.|
 
 ## Required specifications for on-demand delivery apps
 
