@@ -52,7 +52,8 @@ On-demand delivery apps must be implemented according to the following specifica
 See the [README](https://github.com/eve-autonomy/go_interface_params.default) in go_interface_params.
 
 ### Headers
-The following contents are output as Headers.
+The following contents are output as Headers.<br>
+The token authentication specifications follow the [Django REST framework](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication).
 
 <details><summary>Headers sample</summary><div>
 
