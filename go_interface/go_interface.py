@@ -47,13 +47,17 @@ class GoInterface(Node):
         super().__init__("go_interface")
         logger = self.get_logger()
 
+        timer_period = 3.0
+
         service_url = self.declare_parameter("delivery_reservation_service_url")
         access_token = self.declare_parameter("access_token")
 
         if not service_url.get_parameter_value().string_value \
                 or not access_token.get_parameter_value().string_value:
-            logger.info("[go_interface] Parameters not found.")
+            logger.error("[go_interface] Parameters not found.")
             return
+
+        self._is_emergency = False
 
         self._service_url = service_url.get_parameter_value().string_value
         self._access_token = access_token.get_parameter_value().string_value
@@ -83,6 +87,9 @@ class GoInterface(Node):
             ChangeLockFlg, "req_change_lock_flg", self.on_change_lock_flg, profile)
         self._vehicle_status_publisher = self.create_publisher(
             VehicleStatus, "api_vehicle_status", profile)
+
+        # timer
+        self._timer = self.create_timer(timer_period, self.output_timer)
 
         logger.info("[go_interface] init.")
 
@@ -129,6 +136,14 @@ class GoInterface(Node):
             logger.error(
                 "[go_interface] Response data does not match the owned data.")
             return
+        
+        if response_data.get(STR_RESULT).get(STR_LOCK_FLG) is None:
+            logger.error(
+                "[go_interface] Failed to parse lock_flg retrieved from server.")
+            return
+        
+        self.fetch_from_ondemand_delivery_apps()
+
 
     def on_vehicle_info(self, vehicle_info):
         logger = self.get_logger()
@@ -137,10 +152,25 @@ class GoInterface(Node):
         # Get vehicle_id
         vehicle_id = json_str.get(STR_VEHICLE_ID)
         if vehicle_id is None:
+            self._is_emergency = True
             logger.error(
                 "[go_interface] Vehicle ID could not be obtained from FMS.")
             return
         self._vehicle_id = vehicle_id
+        self._is_emergency = False
+
+    def output_timer(self):
+        logger = self.get_logger()
+        if (self._is_emergency):
+            logger.error("[go_interface] is_emergency.")
+            return
+        if (self._vehicle_id==""):
+            logger.error("[go_interface] _vehicle_id is unset.")
+            return
+        self.fetch_from_ondemand_delivery_apps()
+
+    def fetch_from_ondemand_delivery_apps(self):
+        logger = self.get_logger()
 
         # Get vehicle-status from server via REST API
         url = "{0}/api/vehicle_status?vehicle_id={1}".format(
