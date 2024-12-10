@@ -90,6 +90,7 @@ class GoInterface(Node):
         logger = self.get_logger()
         # Check if vehicle id has been updated
         if not self._vehicle_id:
+            logger.warning("[go_interface] Vehicle ID not set. Skipping request.")
             return
 
         lock_flg = change_lock_flg.flg
@@ -100,6 +101,9 @@ class GoInterface(Node):
             STR_VEHICLE_ID: self._vehicle_id,
             STR_LOCK_FLG: int(lock_flg)}
 
+        logger.info(f"[go_interface] Sending PATCH request to: {url}")
+        logger.info(f"[go_interface] Request payload: {payload}")
+
         try:
             session = self.retry_session(retries=self._patch_max_retry)
             res = session.patch(
@@ -109,6 +113,9 @@ class GoInterface(Node):
                 timeout=(
                     self._patch_connect_timeout,
                     self._patch_read_timeout))
+            
+            logger.info(f"[go_interface] PATCH response status: {res.status_code}")
+            logger.info(f"[go_interface] PATCH response: {res.text[:200]}...")
             res.raise_for_status()
         except requests.exceptions.RequestException as e:
             logger.error(
@@ -145,6 +152,7 @@ class GoInterface(Node):
         # Get vehicle-status from server via REST API
         url = "{0}/api/vehicle_status?vehicle_id={1}".format(
             self._service_url, self._vehicle_id)
+        logger.info(f"[go_interface] Sending GET request to: {url}")
 
         try:
             res = requests.get(
@@ -152,6 +160,9 @@ class GoInterface(Node):
                 headers=self._headers,
                 timeout=(
                     self._get_connect_timeout, self._get_read_timeout))
+            # レスポンスの詳細をログ出力
+            logger.info(f"[go_interface] Response status code: {res.status_code}")
+            logger.info(f"[go_interface] Response content: {res.text[:200]}...")  # 最初の200文字のみ表示
             res.raise_for_status()
         except requests.exceptions.RequestException as e:
             logger.error(
@@ -206,6 +217,8 @@ class GoInterface(Node):
         self._vehicle_status_publisher.publish(vehicle_status)
 
     def retry_session(self, retries, session=None, backoff_factor=0.3):
+        logger = self.get_logger()
+        logger.info(f"[go_interface] Creating retry session with {retries} retries")
         session = session or requests.Session()
         retry = Retry(
             total=retries,
@@ -232,3 +245,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
